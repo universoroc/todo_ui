@@ -1,0 +1,50 @@
+<odoo>
+    <data>
+        <!-- Actions for the menu items -->
+        <act_window id="action_todo_stage"
+                    name="To-Do Task Stages"
+                    res_model="todo.task.stage"
+                    view_mode="tree,form"
+                    target="current"
+                    context="{'default_state': 'open'}"
+                    domain="[]"
+                    limit="80"
+        />
+        <!--        view_mode="tree,form"-->
+        <act_window id="todoroc_app.action_todo_task"
+                    name="To-Do Tasks"
+                    res_model="todoroc_app.todoroc_app"
+                    view_mode="tree,form,calendar,graph,pivot"
+                    target="current"
+                    context="{'search_default_filter_my_tasks': True}"
+        />
+        <!-- Add option to the "More" button -->
+        <!--            src_model="todo.task"-->
+        <!--            multi="False"-->
+        <act_window id="action_todo_task_stage"
+                    name="To-Do Task Stages"
+                    view_mode="tree,form"
+                    res_model="todo.task.stage"
+        />
+        <!-- Menu items -->
+        <!-- Modify top menu item -->
+        <menuitem id="todoroc_app.menu_todo_task" name="To-Do"/>
+        <!-- App menu items -->
+        <menuitem id="todoroc_app.menu_todo_task_view"
+                  name="Tasks"
+                  parent="todoroc_app.menu_todo_task"
+                  sequence="10"
+                  action="todoroc_app.action_todo_task"/>
+        <!--   groups="base.group_system"-->
+        <menuitem id="todoroc_app.menu_todo_config"
+                  name="Configuration"
+                  parent="todoroc_app.menu_todo_task"
+                  sequence="20"
+        />
+        <menuitem id="todoroc_app.menu_todo_task_stage"
+                  name="Stages"
+                  parent="todoroc_app.menu_todo_config"
+                  sequence="30"
+                  action="action_todo_stage"/>
+    </data>
+</odoo>
